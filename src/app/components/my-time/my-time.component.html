@@ -1,0 +1,48 @@
+<div class="row">
+    <form [formGroup]="myTimeComponentForm" class="col-md-offset-4 col-md-4">
+        <!-- Date -->
+        <div class="form-group">
+            <label>Date:</label>
+            <input type="date" class="form-control" formControlName="date">
+        </div>
+        <!-- Shift Dropdown-->
+        <div class="form-group">
+            <label for="sel1">Shift:</label>
+            <select class="form-control" id="sel1" formControlName="shift">
+              <option>General</option>
+              <option>Shift A</option>
+              <option>Shift B</option>
+              <option>Shift C</option>
+            </select>
+        </div>
+        <div class="pull-right">
+          <button type="submit" class="btn btn-primary" (click)="submitShift()">Submit</button>
+        </div>
+    </form>
+</div>
+
+<div class="row">
+  <div class="col-md-offset-4 col-md-4">
+    <table class="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Date</th>
+            <th>Shift</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let shift of shifts">
+            <td>{{appService.currentUser.name}}</td>
+            <td>{{shift.date | date}}</td>
+            <td>{{shift.shift}}</td>
+            <td>
+              <span class="glyphicon glyphicon-pencil"></span>
+              <span class="glyphicon glyphicon-trash"></span>
+            </td>
+          </tr>
+        </tbody>
+    </table>
+  </div>
+</div>

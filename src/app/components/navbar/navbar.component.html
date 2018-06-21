@@ -1,0 +1,14 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Smart Shift Tracker</a>
+    </div>
+    <ul class="nav navbar-nav navbar-right">
+      <li *ngIf="!appService.isLoggedIn()" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><a routerLink="/">Login</a></li>
+      <li *ngIf="!appService.isLoggedIn()" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><a routerLink="/register">Register</a></li>
+      <li *ngIf="appService.isLoggedIn()" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><a routerLink="/dashboard">Dashboard</a></li>
+      <li *ngIf="appService.isLoggedIn() && !appService.currentUser.isAdmin" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><a routerLink="/mytime">My Time</a></li>
+      <li *ngIf="appService.isLoggedIn()" style="cursor:pointer"><a (click)="appService.logout()">Logout</a></li>
+    </ul>
+  </div>
+</nav>
